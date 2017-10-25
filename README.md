@@ -14,4 +14,4 @@ Plotly -> interactive plot
 ps: Ideally the python script will figure out the current work dir and throw it into R -e "shing::runApp(pwd)". If it's not work, well, welcome to the real world.
 
 
-![Preview](https://github.com/ruiqili2/BVND-Visualization/edit/master/bndplot.png)
+![Preview](https://github.com/ruiqili2/BVND-Visualization/bndplot.png)
