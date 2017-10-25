@@ -13,7 +13,7 @@ library(plotly)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
    
-  output$bndPlot <- renderPlotly({
+  output$bvndPlot <- renderPlotly({
     
     mu1 = input$mu1
     mu2 = input$mu2

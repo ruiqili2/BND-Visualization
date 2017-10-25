@@ -58,7 +58,7 @@ shinyUI(fluidPage(
     
     # Show a plot of the generated distribution
     mainPanel(
-       plotlyOutput('bndPlot'),
+       plotlyOutput('bvndPlot'),
        verbatimTextOutput("event")
     )
   )
