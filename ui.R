@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(plotly)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -46,7 +47,13 @@ shinyUI(fluidPage(
                    "s12: ",
                    min = 0,
                    max = 20,
-                   value = 10)
+                   value = 10),
+       
+       sliderInput("rho",
+                   "rho: ",
+                   min = 0,
+                   max = 1,
+                   value = 0.5)
     ),
     
     # Show a plot of the generated distribution

@@ -20,6 +20,7 @@ shinyServer(function(input, output) {
     s11 = input$s11
     s22 = input$s22
     s12 = input$s12
+    rho = input$rho
     
     x1  = seq(-20, 20, length = 41)
     x2 = x1
