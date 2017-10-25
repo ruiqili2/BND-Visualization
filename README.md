@@ -1,7 +1,7 @@
 # BVD-Visualization
 
-# Shiny Web App
+## Shiny Web App
 Plotly -> interactive plot
 
-# Run App Outside R
+## Run App Outside R
 R -e "shiny::runApp('~/the/path/to/folder')"
