@@ -1,0 +1,139 @@
+---
+title: "Bivariate Normal Distribution"
+author: "Ruiqi Li"
+date: "October 26, 2017"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(plotly)
+```
+
+## BVND Plot
+Move the slider to change the plot
+
+```{r eruptions, echo=FALSE}
+inputPanel(
+  sliderInput("mu1",
+                   "mu1: ",
+                   min = -20,
+                   max = 20,
+                   value = 0),
+       
+       sliderInput("mu2",
+                   "mu2: ",
+                   min = -20,
+                   max = 20,
+                   value = 0),
+       
+       sliderInput("s11",
+                   "s11: ",
+                   min = 0,
+                   max = 20,
+                   value = 10),
+       
+       sliderInput("s22",
+                   "s22: ",
+                   min = 0,
+                   max = 20,
+                   value = 10),
+       
+       sliderInput("rho",
+                   "rho: ",
+                   min = 0,
+                   max = 1,
+                   value = 0.5),
+       
+       checkboxInput("cm", "Show Covariance Matrix", TRUE)
+)
+
+renderPlotly({
+    
+    mu1 = input$mu1
+    mu2 = input$mu2
+    s11 = input$s11
+    s22 = input$s22
+    rho = input$rho
+    
+    x1  = seq(-20, 20, length = 41)
+    x2 = x1
+    
+    bvnd = function(x1, x2) {
+      term1<-1 / (2 * pi * sqrt(s11 * s22 * (1 - rho ^ 2)))
+      term2<--1 / (2*(1 - rho ^ 2))
+      term3<-(x1 - mu1) ^ 2 / s11
+      term4<-(x2 - mu2) ^ 2 / s22
+      term5<--2 * rho * ((x1 - mu1) * (x2 - mu2)) / (sqrt(s11) * sqrt(s22))
+      term1 * exp(term2 * (term3 + term4 - term5))
+    }
+    
+    z = outer(x1, x2, bvnd)
+    plot_ly(x = x1, y = x2, z = z) %>% add_surface()
+  })
+
+
+renderPlotly({
+    
+    mu1 = input$mu1
+    mu2 = input$mu2
+    s11 = input$s11
+    s22 = input$s22
+    rho = input$rho
+    
+    x1  = seq(-20, 20, length = 41)
+    x2 = x1
+    
+    bvnd = function(x1, x2) {
+      term1<-1 / (2 * pi * sqrt(s11 * s22 * (1 - rho ^ 2)))
+      term2<--1 / (2*(1 - rho ^ 2))
+      term3<-(x1 - mu1) ^ 2 / s11
+      term4<-(x2 - mu2) ^ 2 / s22
+      term5<--2 * rho * ((x1 - mu1) * (x2 - mu2)) / (sqrt(s11) * sqrt(s22))
+      term1 * exp(term2 * (term3 + term4 - term5))
+    }
+    
+    z = outer(x1, x2, bvnd)
+    plot_ly(z = z, type = "contour")
+  })
+
+renderPrint({
+    mu1 = input$mu1
+    mu2 = input$mu2
+    s11 = input$s11
+    s22 = input$s22
+    rho = input$rho
+    
+    s12 <- rho * sqrt(s11) * sqrt(s22)
+    if (input$cm == F) "Click on the checkbox to see the covariance" else s12
+  })
+
+renderPrint({
+    d <- event_data("plotly_hover")
+    if (is.null(d)) "Hover on a point!" else d
+  })
+  
+```
+
+## Embedded Application
+
+It's also possible to embed an entire Shiny application within an R Markdown document using the `shinyAppDir` function. This example embeds a Shiny application located in another directory:
+
+```{r tabsets, echo=FALSE}
+shinyAppDir(
+  system.file("examples/06_tabsets", package = "shiny"),
+  options = list(
+    width = "100%", height = 550
+  )
+)
+```
+
+Note the use of the `height` parameter to determine how much vertical space the embedded application should occupy.
+
+You can also use the `shinyApp` function to define an application inline rather then in an external directory.
+
+In all of R code chunks above the `echo = FALSE` attribute is used. This is to prevent the R code within the chunk from rendering in the document alongside the Shiny components.
+
+
+

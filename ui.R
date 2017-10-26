@@ -47,13 +47,16 @@ shinyUI(fluidPage(
                    "rho: ",
                    min = 0,
                    max = 1,
-                   value = 0.5)
+                   value = 0.5),
+       
+       checkboxInput("cm", "Show Covariance Matrix", TRUE)
     ),
     
     # Show a plot of the generated distribution
     mainPanel(
        plotlyOutput('bvndPlot3D'),
        plotlyOutput('bvndPlot2D'),
+       verbatimTextOutput("cm"),
        verbatimTextOutput("event")
     )
   )

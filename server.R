@@ -61,9 +61,23 @@ shinyServer(function(input, output) {
     plot_ly(z = z, type = "contour")
   })
   
+  output$cm <- renderPrint({
+    mu1 = input$mu1
+    mu2 = input$mu2
+    s11 = input$s11
+    s22 = input$s22
+    rho = input$rho
+    
+    s12 <- rho * sqrt(s11) * sqrt(s22)
+    s12
+    if (input$cm == F) "Click on the checkbox to see the covariance" else s12
+  })
+  
   output$event <- renderPrint({
     d <- event_data("plotly_hover")
     if (is.null(d)) "Hover on a point!" else d
   })
+  
+  
   
 })
