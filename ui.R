@@ -43,12 +43,6 @@ shinyUI(fluidPage(
                    max = 20,
                    value = 10),
        
-       sliderInput("s12",
-                   "s12: ",
-                   min = 0,
-                   max = 20,
-                   value = 10),
-       
        sliderInput("rho",
                    "rho: ",
                    min = 0,

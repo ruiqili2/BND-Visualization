@@ -19,7 +19,6 @@ shinyServer(function(input, output) {
     mu2 = input$mu2
     s11 = input$s11
     s22 = input$s22
-    s12 = input$s12
     rho = input$rho
     
     x1  = seq(-20, 20, length = 41)
@@ -44,7 +43,6 @@ shinyServer(function(input, output) {
     mu2 = input$mu2
     s11 = input$s11
     s22 = input$s22
-    s12 = input$s12
     rho = input$rho
     
     x1  = seq(-20, 20, length = 41)
