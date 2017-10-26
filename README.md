@@ -15,3 +15,6 @@ ps: Ideally the python script will figure out the current work dir and throw it 
 
 
 ![Preview](https://github.com/ruiqili2/BVND-Visualization/blob/master/bndplot.png)
+
+## Resource
+http://www2.stat.duke.edu/~rcs46/lectures_2015/02-multivar2/02-multivar2.pdf
