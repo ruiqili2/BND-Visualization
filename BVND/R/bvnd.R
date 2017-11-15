@@ -24,14 +24,15 @@ plot2D = function(mu1, mu2, s11, s22, rho) {
   }
 
   z = outer(x1, x2, bvnd)
-  plot_ly(z = z, type = "contour")
+  plot_ly(
+    z = z,
+    type = "contour",
+    contours = list(showlabels = TRUE)
+  )
 }
 
 plot3D = function(mu1, mu2, s11, s22, rho) {
-  if (!requireNamespace("plotly", quietly = TRUE)) {
-    stop("'plotly' package needed for this function to work. Please install it.",
-         call. = FALSE)
-  }
+
   x1  = seq(-20, 20, length = 41)
   x2 = x1
 
