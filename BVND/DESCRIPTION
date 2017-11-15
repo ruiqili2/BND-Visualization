@@ -1,0 +1,14 @@
+Package: BVND
+Type: Package
+Title: Visualization for Bivariate Normal Distribution (Title Case)
+Version: 0.1.0
+Author: Ruiqi Li
+Maintainer: Ruiqi Li <ruiqili2@illinois.edu>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports:
+    plotly,
+    magrittr
