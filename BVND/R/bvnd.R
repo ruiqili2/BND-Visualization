@@ -9,7 +9,6 @@
 #   Test Package:              'Ctrl + Shift + T'
 
 
-
 plot2D = function(mu1, mu2, s11, s22, rho) {
 
   x1  = seq(-20, 20, length = 41)
@@ -29,7 +28,10 @@ plot2D = function(mu1, mu2, s11, s22, rho) {
 }
 
 plot3D = function(mu1, mu2, s11, s22, rho) {
-
+  if (!requireNamespace("plotly", quietly = TRUE)) {
+    stop("'plotly' package needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
   x1  = seq(-20, 20, length = 41)
   x2 = x1
 
