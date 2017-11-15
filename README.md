@@ -1,5 +1,9 @@
 # BVND-Visualization
 
+## BVND package
+library(devtools)
+devtools::install_github('ruiqili2/BVND-Visualization/BVND')
+
 ## Shiny Web App
 Plotly -> interactive plot
 
